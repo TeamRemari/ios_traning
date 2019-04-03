@@ -11,8 +11,14 @@ import Foundation
 struct FeedItem: Decodable {
     let title: String
     let user: UserInfo
-}
-
-struct UserInfo: Decodable {
-    let id: String
+    let tags: [Tag]
+    
+    struct UserInfo: Decodable {
+        let id: String
+        let profile_image_url: String
+    }
+    
+    struct Tag: Decodable {
+        let name: String
+    }
 }

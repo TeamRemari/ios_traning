@@ -18,16 +18,21 @@ class ViewController: UITableViewController {
         super.viewDidLoad()
         navigationItem.title = "投稿一覧"
         navigationController?.navigationBar.prefersLargeTitles = true
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
+        tableView.register(PostCell.self, forCellReuseIdentifier: cellId)
+        tableView.contentInset = .init(top: 0, left: 0, bottom: 0, right: 0)
         
         fetchFeedItems(completion: {[weak self] in self?.tableView.reloadData()})
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 110
     }
     
     private func fetchFeedItems(completion: @escaping () -> ()) {
         let url = "https://qiita.com/api/v2/items"
         guard var urlComponents = URLComponents(string: url) else {return}
         urlComponents.queryItems = [
-            URLQueryItem(name: "per_page", value: "20"),
+            URLQueryItem(name: "per_page", value: "30"),
             URLQueryItem(name: "query", value: "iOS")
         ]
         
@@ -64,10 +69,8 @@ class ViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let post = feedItems[indexPath.row]
-        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
-        cell.textLabel?.numberOfLines = 0
-        cell.detailTextLabel?.text = post.user.id
-        cell.textLabel?.text = post.title
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellId) as! PostCell
+        cell.setupCell(with: post)
         return cell
     }
 }

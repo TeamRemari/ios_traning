@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E92B65D2254284F00C6B529 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E92B65C2254284F00C6B529 /* PostCell.swift */; };
 		8EC803F52253942D00F50AD1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC803F42253942C00F50AD1 /* AppDelegate.swift */; };
 		8EC803F72253942D00F50AD1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC803F62253942D00F50AD1 /* ViewController.swift */; };
 		8EC803FA2253942D00F50AD1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EC803F82253942D00F50AD1 /* Main.storyboard */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8E92B65C2254284F00C6B529 /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		8EC803F12253942C00F50AD1 /* QiitaAPI_TableView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QiitaAPI_TableView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EC803F42253942C00F50AD1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8EC803F62253942D00F50AD1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -58,6 +60,7 @@
 			children = (
 				8EC803F42253942C00F50AD1 /* AppDelegate.swift */,
 				8EC803F62253942D00F50AD1 /* ViewController.swift */,
+				8E92B65C2254284F00C6B529 /* PostCell.swift */,
 				8EC803F82253942D00F50AD1 /* Main.storyboard */,
 				8EC803FB2253942E00F50AD1 /* Assets.xcassets */,
 				8EC803FD2253942E00F50AD1 /* LaunchScreen.storyboard */,
@@ -141,6 +144,7 @@
 				8EC803F72253942D00F50AD1 /* ViewController.swift in Sources */,
 				8EC803F52253942D00F50AD1 /* AppDelegate.swift in Sources */,
 				8EC804072253953E00F50AD1 /* FeedItem.swift in Sources */,
+				8E92B65D2254284F00C6B529 /* PostCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
