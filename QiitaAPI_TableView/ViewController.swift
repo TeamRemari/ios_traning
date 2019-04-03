@@ -49,7 +49,7 @@ class ViewController: UITableViewController {
                 items.forEach({self?.feedItems.append($0)})
                 DispatchQueue.main.async {
                     items.forEach({[weak self] (item) in
-                        let cell = PostCell()
+                        let cell = self?.tableView.dequeueReusableCell(withIdentifier: PostCell.description()) as! PostCell
                         cell.setupCell(with: item)
                         self?.cells.append(cell)
                     })
