@@ -10,15 +10,13 @@ import UIKit
 
 class ViewController: UITableViewController {
     
-    private let cellId = "cellId"
-    
     private var feedItems = [FeedItem]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "投稿一覧"
         navigationController?.navigationBar.prefersLargeTitles = true
-        tableView.register(PostCell.self, forCellReuseIdentifier: cellId)
+        tableView.register(PostCell.self, forCellReuseIdentifier: PostCell.description())
         tableView.contentInset = .init(top: 0, left: 0, bottom: 0, right: 0)
         
         fetchFeedItems(completion: {[weak self] in self?.tableView.reloadData()})
@@ -69,7 +67,7 @@ class ViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let post = feedItems[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellId) as! PostCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: PostCell.description()) as! PostCell
         cell.setupCell(with: post)
         return cell
     }

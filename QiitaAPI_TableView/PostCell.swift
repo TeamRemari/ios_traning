@@ -8,6 +8,18 @@
 
 import UIKit
 
+/*
+ コメント
+ 
+ 1. UIを作ってるのに、addSubViewしてないから見えない。UITableViewCellなのでcontentViewにaddSubViewすることで表示される。contentViewにaddSubViewするタイミングはinit
+ 2. コードでUIを作った場合、layoutSubViewsの中でレイアウトをする。layoutSubViewsはXcodeがUIのframeを更新するタイミングだ！と思った時に呼ばれる。例えばcellの高さを呼ぶメソッドがViewControllerから呼ばれ高さが決まった時、画面が回転した時などなど。
+     何回も呼ばれるので、オートレイアウトの場合はここでやっちゃダメだけど、frameの場合はここが楽
+ 3. userImageView.frame.origin.x + userImageView.bounds.width + 12は、userImageView.frame.maxX + 12と同義
+ 4. Cellなんで、boundsではなくcontentView.bounds
+ 5. userNameLabel.frame.origin.y + userNameLabel.bounds.height + 8は userNameLabel.frame.maxY + 8と同義
+ 6. layoutIfNeeded() setNeedsLayout()を呼ぶと、layoutSubViewsが呼ばれる
+ */
+
 class PostCell: UITableViewCell {
     private let postTitleLabel: UILabel = {
         let label = UILabel()
@@ -43,6 +55,38 @@ class PostCell: UITableViewCell {
         return img
     }()
     
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        contentView.addSubview(postTitleLabel)
+        contentView.addSubview(userNameLabel)
+        contentView.addSubview(tagNameLabel)
+        contentView.addSubview(userImageView)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        userImageView.frame.origin = CGPoint(x: contentView.bounds.origin.x + 12, y: contentView.bounds.origin.y + 12)
+        userNameLabel.frame.origin = CGPoint(x: userImageView.frame.maxX + 12,
+                                             y: userImageView.frame.origin.y)
+        userNameLabel.frame.size.height = userNameLabel.intrinsicContentSize.height
+        userNameLabel.frame.size.width = contentView.bounds.width - userNameLabel.frame.origin.x
+        postTitleLabel.frame.origin = CGPoint(x: userNameLabel.frame.origin.x,
+                                              y: userNameLabel.frame.maxY + 8)
+        postTitleLabel.preferredMaxLayoutWidth = contentView.bounds.width - userNameLabel.frame.origin.x
+        postTitleLabel.frame.size = postTitleLabel.intrinsicContentSize
+        
+        tagNameLabel.frame.origin = CGPoint(x: userNameLabel.frame.origin.x,
+                                            y: postTitleLabel.frame.maxY)
+        tagNameLabel.preferredMaxLayoutWidth = contentView.bounds.width - userNameLabel.frame.origin.x
+        tagNameLabel.frame.size = postTitleLabel.intrinsicContentSize
+    }
+    
     func setupCell(with feedItem: FeedItem) {
         postTitleLabel.text = feedItem.title
         userNameLabel.text = feedItem.user.id
@@ -50,7 +94,8 @@ class PostCell: UITableViewCell {
         feedItem.tags.forEach({
             tagNameLabel.text! += $0.name + " "
         })
-        setupSubviews()
+        layoutIfNeeded()
+        setNeedsLayout()
     }
     
     private func setUserImageFromUrl(url: String) {
@@ -69,26 +114,5 @@ class PostCell: UITableViewCell {
         }.resume()
     }
     
-    private func setupSubviews() {
-        
-        
-        [postTitleLabel, userNameLabel,tagNameLabel,userImageView].forEach({addSubview($0)})
-        
-        userImageView.frame.origin = CGPoint(x: bounds.origin.x + 12, y: bounds.origin.y + 12)
-        userNameLabel.frame.origin = CGPoint(x: userImageView.frame.origin.x + userImageView.bounds.width + 12,
-                                     y: userImageView.frame.origin.y)
-        userNameLabel.frame.size.height = userNameLabel.intrinsicContentSize.height
-        userNameLabel.frame.size.width = bounds.width - userNameLabel.frame.origin.x
-        postTitleLabel.frame.origin = CGPoint(x: userNameLabel.frame.origin.x,
-                                              y: userNameLabel.frame.origin.y + userNameLabel.bounds.height + 8)
-        postTitleLabel.preferredMaxLayoutWidth = bounds.width - userNameLabel.frame.origin.x
-        postTitleLabel.frame.size = postTitleLabel.intrinsicContentSize
-        
-        tagNameLabel.frame.origin = CGPoint(x: userNameLabel.frame.origin.x,
-                                            y: postTitleLabel.frame.origin.y + postTitleLabel.bounds.height)
-        tagNameLabel.preferredMaxLayoutWidth = bounds.width - userNameLabel.frame.origin.x
-        tagNameLabel.frame.size = postTitleLabel.intrinsicContentSize
-        
-    }
 }
 
