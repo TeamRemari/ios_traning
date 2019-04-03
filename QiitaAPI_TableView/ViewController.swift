@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UITableViewController {
     
     private var feedItems = [FeedItem]()
+    private var cells = [PostCell]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +24,7 @@ class ViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 110
+        return cells[indexPath.row].tagNameLabel.frame.maxY
     }
     
     private func fetchFeedItems(completion: @escaping () -> ()) {
@@ -47,6 +48,11 @@ class ViewController: UITableViewController {
                 let items = try JSONDecoder().decode([FeedItem].self, from: data)
                 items.forEach({self?.feedItems.append($0)})
                 DispatchQueue.main.async {
+                    items.forEach({[weak self] (item) in
+                        let cell = PostCell()
+                        cell.setupCell(with: item)
+                        self?.cells.append(cell)
+                    })
                     completion()
                 }
             } catch {
@@ -66,10 +72,7 @@ class ViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let post = feedItems[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: PostCell.description()) as! PostCell
-        cell.setupCell(with: post)
-        return cell
+        return cells[indexPath.row]
     }
 }
 

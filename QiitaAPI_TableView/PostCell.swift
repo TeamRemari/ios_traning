@@ -36,7 +36,7 @@ class PostCell: UITableViewCell {
         return label
     }()
     
-    private let tagNameLabel: UILabel = {
+    let tagNameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 12)
         label.textColor = UIColor.lightGray
@@ -46,7 +46,7 @@ class PostCell: UITableViewCell {
     }()
     
     private let userImageView: UIImageView = {
-        let sideLength: CGFloat = 74
+        let sideLength: CGFloat = 60
         let img = UIImageView()
         img.frame.size = CGSize(width: sideLength, height: sideLength)
         img.clipsToBounds = true
