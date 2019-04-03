@@ -24,7 +24,7 @@ class ViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return cells[indexPath.row].tagNameLabel.frame.maxY
+        return cells[indexPath.row].tagNameLabel.frame.maxY + 12
     }
     
     private func fetchFeedItems(completion: @escaping () -> ()) {

@@ -82,9 +82,10 @@ class PostCell: UITableViewCell {
         postTitleLabel.frame.size = postTitleLabel.intrinsicContentSize
         
         tagNameLabel.frame.origin = CGPoint(x: userNameLabel.frame.origin.x,
-                                            y: postTitleLabel.frame.maxY)
+                                            y: postTitleLabel.frame.maxY + 4)
         tagNameLabel.preferredMaxLayoutWidth = contentView.bounds.width - userNameLabel.frame.origin.x
-        tagNameLabel.frame.size = postTitleLabel.intrinsicContentSize
+        tagNameLabel.sizeToFit()
+        tagNameLabel.frame.size = tagNameLabel.intrinsicContentSize
     }
     
     func setupCell(with feedItem: FeedItem) {
