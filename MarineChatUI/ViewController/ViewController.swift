@@ -31,6 +31,7 @@ class ViewController: UITableViewController {
         setupNavBar()
         setupTableView()
         setProfileImageCellDelegate()
+        addTapGestureRecognizer()
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -96,6 +97,15 @@ class ViewController: UITableViewController {
     private func setProfileImageCellDelegate() {
         guard let profileImageCell = infoCells[0] as? ProfileImageCell else {return}
         profileImageCell.delegate = self
+    }
+    
+    private func addTapGestureRecognizer() {
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(endEditing))
+        view.addGestureRecognizer(tapRecognizer)
+    }
+    
+    @objc private func endEditing() {
+        tableView.endEditing(true)
     }
 }
 
