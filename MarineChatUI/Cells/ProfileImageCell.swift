@@ -8,15 +8,15 @@
 
 import UIKit
 
-protocol ProfileImageCellDelegate: class {
+protocol ProfileImageCellDelegate: AnyObject {
     func profileImageIsTapped(tableViewCell: ProfileImageCell)
 }
 
-class ProfileImageCell: UITableViewCell {
+final class ProfileImageCell: UITableViewCell {
     
     weak var delegate: ProfileImageCellDelegate?
     
-    let profileImage = UIButton.circleShapedButton(sideLength: Length.diameterNormal)
+    private let profileImage = UIButton.circleShapedButton(sideLength: Length.diameterNormal)
     
     private let descriptionLabel: UILabel = {
         let label = UILabel.defaultLabelInsideCell()
@@ -27,11 +27,8 @@ class ProfileImageCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        profileImage.frame.origin.x = Length.horizontalPadding
-        
-        profileImage.center.y = contentView.center.y
-        descriptionLabel.frame.origin.x = profileImage.frame.maxX + Length.spacingNormal
-        descriptionLabel.center.y = profileImage.center.y
+        layoutProfileImage()
+        layoutDescriptionLabel()
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -44,8 +41,22 @@ class ProfileImageCell: UITableViewCell {
         })
     }
     
+    func setProfileImage(_ image: UIImage) {
+        profileImage.setImage(image, for: .normal)
+    }
+    
     @objc private func profileImageIsTapped() {
         delegate?.profileImageIsTapped(tableViewCell: self)
+    }
+    
+    private func layoutProfileImage() {
+        profileImage.frame.origin.x = Length.horizontalPadding
+        profileImage.center.y = contentView.center.y
+    }
+    
+    private func layoutDescriptionLabel() {
+        descriptionLabel.frame.origin.x = profileImage.frame.maxX + Length.spacingNormal
+        descriptionLabel.center.y = profileImage.center.y
     }
     
     required init?(coder aDecoder: NSCoder) {

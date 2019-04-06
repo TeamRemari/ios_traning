@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E2904C12258748800AC7C96 /* UserProfileInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2904C02258748800AC7C96 /* UserProfileInfo.swift */; };
 		8E92B66B22547B7100C6B529 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E92B66A22547B7100C6B529 /* AppDelegate.swift */; };
 		8E92B66D22547B7100C6B529 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E92B66C22547B7100C6B529 /* ViewController.swift */; };
 		8E92B67022547B7100C6B529 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E92B66E22547B7100C6B529 /* Main.storyboard */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8E2904C02258748800AC7C96 /* UserProfileInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileInfo.swift; sourceTree = "<group>"; };
 		8E92B66722547B7100C6B529 /* MarineChatUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarineChatUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E92B66A22547B7100C6B529 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8E92B66C22547B7100C6B529 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -53,6 +55,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8E2904C22258759300AC7C96 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8E2904C02258748800AC7C96 /* UserProfileInfo.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		8E92B65E22547B7100C6B529 = {
 			isa = PBXGroup;
 			children = (
@@ -73,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				8E92B66A22547B7100C6B529 /* AppDelegate.swift */,
+				8E2904C22258759300AC7C96 /* Model */,
 				8EF14CB42256445100DEACCA /* ViewController */,
 				8EF14CB2225643FC00DEACCA /* Variables */,
 				8EF14CB32256440B00DEACCA /* Cells */,
@@ -197,6 +208,7 @@
 				8E92B66D22547B7100C6B529 /* ViewController.swift in Sources */,
 				8EF14CAE22563CC200DEACCA /* Length.swift in Sources */,
 				8E92B6812254B86E00C6B529 /* SexCell.swift in Sources */,
+				8E2904C12258748800AC7C96 /* UserProfileInfo.swift in Sources */,
 				8EF14CAC22563B5A00DEACCA /* ThemeColor.swift in Sources */,
 				8E92B66B22547B7100C6B529 /* AppDelegate.swift in Sources */,
 				8EAB60262254EC8500CBD21F /* AgeCell.swift in Sources */,

@@ -8,15 +8,50 @@
 
 import UIKit
 
-class ViewController: UITableViewController {
+private typealias CellsDelegate =
+    ProfileImageCellDelegate & NickNameCellDelegate &
+    SexCellDelegate & AgeCellDelegate &
+    LocationCellDelegate & IntroCellDelegate
+
+final class ViewController: UITableViewController {
+    
+    private var userProfileInfo = UserProfileInfo() {
+        didSet {
+            checkIfUserProfileInfoIsCompleted()
+        }
+    }
     
     private let closeButton = UIBarButtonItem().closeButton()
     private let saveButton = UIBarButtonItem().saveButton()
     
     private let sectionNames = ["情報","自己紹介"]
     
-    private let infoCells = [ProfileImageCell(), NicknameCell(), SexCell(), AgeCell(), LocationCell()]
-    private let introCell = IntroCell()
+    private lazy var infoCells: [UITableViewCell] = [{
+            let cell = ProfileImageCell()
+            cell.delegate = self
+            return cell
+        }(), {
+            let cell = NicknameCell()
+            cell.delegate = self
+            return cell
+        }(), {
+            let cell = SexCell()
+            cell.delegate = self
+            return cell
+        }(), {
+            let cell = AgeCell()
+            cell.delegate = self
+            return cell
+        }(), {
+            let cell = LocationCell()
+            cell.delegate = self
+            return cell
+        }()]
+    private lazy var introCell: UITableViewCell = {
+        let cell = IntroCell()
+        cell.delegate = self
+        return cell
+    }()
     
     private lazy var imagePicker: UIImagePickerController = {
         let ip = UIImagePickerController()
@@ -27,10 +62,9 @@ class ViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.allowsSelection = false
+        checkIfUserProfileInfoIsCompleted()
         setupNavBar()
         setupTableView()
-        setProfileImageCellDelegate()
         addTapGestureRecognizer()
     }
     
@@ -83,6 +117,17 @@ class ViewController: UITableViewController {
         }
     }
     
+    private func checkIfUserProfileInfoIsCompleted() {
+        let containsNil = Mirror(reflecting: userProfileInfo).children.contains(where: {
+            if case Optional<Any>.none = $0.value  {
+                return true
+            } else {
+                return false
+            }
+        })
+        saveButton.isEnabled = !containsNil
+    }
+    
     private func setupNavBar() {
         navigationItem.leftBarButtonItem = closeButton
         navigationItem.rightBarButtonItem = saveButton
@@ -91,12 +136,8 @@ class ViewController: UITableViewController {
     
     private func setupTableView() {
         tableView.separatorStyle = .none
-        tableView.backgroundColor = UIColor(red: 244/255, green: 244/255, blue: 244/255, alpha: 1)
-    }
-    
-    private func setProfileImageCellDelegate() {
-        guard let profileImageCell = infoCells[0] as? ProfileImageCell else {return}
-        profileImageCell.delegate = self
+        tableView.backgroundColor = ThemeColor.background
+        tableView.allowsSelection = false
     }
     
     private func addTapGestureRecognizer() {
@@ -109,9 +150,11 @@ class ViewController: UITableViewController {
     }
 }
 
-// ProfileImageCellDelegate
 
-extension ViewController: ProfileImageCellDelegate {
+// Implements all cells delegate methods
+
+extension ViewController: CellsDelegate {
+    
     func profileImageIsTapped(tableViewCell: ProfileImageCell) {
         let actionSheet = UIAlertController(title: "画像選択時の注意", message: "卑猥な画像を設定した場合、所定の処置を行います。", preferredStyle: .actionSheet)
         actionSheet.addAction(
@@ -133,6 +176,41 @@ extension ViewController: ProfileImageCellDelegate {
         )
         present(actionSheet, animated: true, completion: nil)
     }
+    
+    func ageDidSet(age: Int) {
+        userProfileInfo.age = age
+    }
+    
+    func introDidSet(_ intro: String) {
+        if intro == "" {
+            userProfileInfo.intro = nil
+        } else {
+            userProfileInfo.intro = intro
+        }
+    }
+    
+    func locationDidSet(_ location: String) {
+        userProfileInfo.location = location
+    }
+    
+    func nickNameDidChange(with nickName: String) {
+        if nickName == "" {
+            userProfileInfo.nickName = nil
+        } else {
+            userProfileInfo.nickName = nickName
+        }
+    }
+    
+    func sexIsSelected(_ sex: SexCell.Sex) {
+        switch sex {
+        case .male:
+            userProfileInfo.sex = "male"
+        case .female:
+            userProfileInfo.sex = "female"
+        case .notSelected:
+            userProfileInfo.sex = nil
+        }
+    }
 }
 
 // UIImagePickerControllerDelegate
@@ -141,7 +219,9 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             if let profileImageCell = infoCells[0] as? ProfileImageCell {
-                profileImageCell.profileImage.setImage(image, for: .normal)
+                profileImageCell.setProfileImage(image)
+                
+                userProfileInfo.profileImage = image.jpegData(compressionQuality: 0.5)
             }
         }
         dismiss(animated: true, completion: nil)

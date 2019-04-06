@@ -8,7 +8,12 @@
 
 import UIKit
 
-class AgeCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSource {
+protocol AgeCellDelegate: AnyObject {
+    func ageDidSet(age: Int)
+}
+
+final class AgeCell: UITableViewCell {
+    weak var delegate: AgeCellDelegate?
 
     private let ageData: [Int] = Array(1...130)
     
@@ -20,7 +25,7 @@ class AgeCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSource {
     
     private let picker = UIPickerView()
     
-    let textField: UITextField = {
+    private let textField: UITextField = {
         let tf = UITextField()
         tf.placeholder = "未設定"
         tf.textAlignment = .right
@@ -39,29 +44,22 @@ class AgeCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSource {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        ageLabel.frame.origin.x = Length.horizontalPadding
-        ageLabel.center.y = contentView.center.y
-        ageLabel.frame.size = ageLabel.intrinsicContentSize
-        textField.frame.origin = .init(x: ageLabel.frame.maxX + Length.spacingNormal, y: ageLabel.frame.minY)
-        textField.frame.size = .init(width: contentView.bounds.width - textField.frame.minX - Length.horizontalPadding, height: ageLabel.bounds.size.height)
+        layoutAgeLabel()
+        layoutTextField()
         
         if !picker.isHidden {
-            pickerAccessoryViewDoneButton.frame.origin.x = contentView.bounds.width - pickerAccessoryViewDoneButton.bounds.width - Length.horizontalPadding
-            pickerAccessoryViewDoneButton.center.y = textField.inputAccessoryView!.center.y
+            layoutPickerAccessoryViewDoneButton()
         }
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        picker.delegate = self
-        picker.dataSource = self
-        textField.inputView = picker
-        textField.inputAccessoryView = makePickerAccessoryView()
+        setupPicker()
+        setupTextField()
+        
         [ageLabel, textField].forEach({
             contentView.addSubview($0)
         })
-        
-        pickerAccessoryViewDoneButton.addTarget(self, action: #selector(donePicking), for: .touchUpInside)
     }
     
     @objc private func donePicking() {
@@ -78,6 +76,39 @@ class AgeCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSource {
         return view
     }
     
+    private func layoutAgeLabel() {
+        ageLabel.frame.origin.x = Length.horizontalPadding
+        ageLabel.center.y = contentView.center.y
+        ageLabel.frame.size = ageLabel.intrinsicContentSize
+    }
+    
+    private func layoutTextField() {
+        textField.frame.origin = .init(x: ageLabel.frame.maxX + Length.spacingNormal, y: ageLabel.frame.minY)
+        textField.frame.size = .init(width: contentView.bounds.width - textField.frame.minX - Length.horizontalPadding, height: ageLabel.bounds.size.height)
+    }
+    
+    private func layoutPickerAccessoryViewDoneButton() {
+        pickerAccessoryViewDoneButton.frame.origin.x = contentView.bounds.width - pickerAccessoryViewDoneButton.bounds.width - Length.horizontalPadding
+        pickerAccessoryViewDoneButton.center.y = textField.inputAccessoryView!.center.y
+    }
+    
+    private func setupPicker() {
+        picker.delegate = self
+        picker.dataSource = self
+        pickerAccessoryViewDoneButton.addTarget(self, action: #selector(donePicking), for: .touchUpInside)
+    }
+    
+    private func setupTextField() {
+        textField.inputView = picker
+        textField.inputAccessoryView = makePickerAccessoryView()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+extension AgeCell: UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -91,10 +122,8 @@ class AgeCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        textField.text = String(ageData[row])
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        let age = ageData[row]
+        textField.text = String(age)
+        delegate?.ageDidSet(age: age)
     }
 }

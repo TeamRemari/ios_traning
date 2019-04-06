@@ -11,7 +11,7 @@ import UIKit
 extension UIBarButtonItem {
     func closeButton() -> Self {
         image = UIImage(imageLiteralResourceName: "closeButton").withRenderingMode(.alwaysTemplate)
-        tintColor = .white
+        tintColor = ThemeColor.onMain
         return self
     }
     
@@ -19,15 +19,19 @@ extension UIBarButtonItem {
         title = "保存"
         setTitleTextAttributes([
             NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 18),
-            NSAttributedString.Key.foregroundColor: UIColor.white
+            NSAttributedString.Key.foregroundColor: ThemeColor.onMain
             ], for: .normal)
+        setTitleTextAttributes([
+            NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 18),
+            NSAttributedString.Key.foregroundColor: ThemeColor.onMainDisabled
+            ], for: .disabled)
         return self
     }
 }
 
 extension UILabel{
     func barTitle() -> Self {
-        textColor  = .white
+        textColor  = ThemeColor.onMain
         font = UIFont.boldSystemFont(ofSize: 20)
         text = "プロフィール"
         return self

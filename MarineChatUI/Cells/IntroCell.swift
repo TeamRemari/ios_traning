@@ -8,26 +8,35 @@
 
 import UIKit
 
-class IntroCell: UITableViewCell {
-    let textView: UITextView = {
+protocol IntroCellDelegate: AnyObject {
+    func introDidSet(_ intro: String)
+}
+
+final class IntroCell: UITableViewCell {
+    weak var delegate: IntroCellDelegate?
+    
+    private let textView: UITextView = {
         let tv = UITextView()
         tv.layer.borderColor = ThemeColor.dark012.cgColor
         tv.layer.borderWidth = 1
+        tv.tintColor = ThemeColor.main
         return tv
     }()
     
+    private let maxWordCount = 100
+    
     private let blankTextViewPlaceHolder = "どんな人？"
     
-    let countLabel: UILabel = {
+    private lazy var countLabel: UILabel = {
         let label = UILabel.defaultLabelInsideCell()
         label.textAlignment = .right
-        label.text = "0/100"
+        label.text = "\(maxWordCount)/\(maxWordCount)"
         return label
     }()
     
     override func layoutSubviews() {
-        textView.frame = CGRect(x: Length.horizontalPadding, y: Length.verticalPadding, width: contentView.bounds.width - Length.horizontalPadding * 2, height: 250)
-        countLabel.frame = CGRect(origin: .init(x: textView.frame.maxX - countLabel.intrinsicContentSize.width - Length.horizontalPadding, y: textView.frame.maxY + Length.spacingSmall), size: .init(width: countLabel.intrinsicContentSize.width + Length.horizontalPadding, height: countLabel.intrinsicContentSize.height))
+        layoutTextView()
+        layoutCountLabel()
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -42,6 +51,15 @@ class IntroCell: UITableViewCell {
     private func textViewIsBlank() {
         textView.text = blankTextViewPlaceHolder
         textView.textColor = ThemeColor.dark026
+        countLabel.text = "0/\(maxWordCount)"
+    }
+    
+    private func layoutTextView() {
+        textView.frame = CGRect(x: Length.horizontalPadding, y: Length.verticalPadding, width: contentView.bounds.width - Length.horizontalPadding * 2, height: 250)
+    }
+    
+    private func layoutCountLabel() {
+        countLabel.frame = CGRect(origin: .init(x: textView.frame.maxX - countLabel.intrinsicContentSize.width - Length.horizontalPadding, y: textView.frame.maxY + Length.spacingSmall), size: .init(width: countLabel.intrinsicContentSize.width + Length.horizontalPadding, height: countLabel.intrinsicContentSize.height))
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -52,7 +70,7 @@ class IntroCell: UITableViewCell {
 extension IntroCell: UITextViewDelegate{
     func textViewDidChange(_ textView: UITextView) {
         let wordCount = textView.text.count
-        countLabel.text = "\(wordCount)/100"
+        countLabel.text = "\(wordCount)/\(maxWordCount)"
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
@@ -63,13 +81,14 @@ extension IntroCell: UITextViewDelegate{
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
+        delegate?.introDidSet(textView.text)
         if textView.text.count == 0 {
             textViewIsBlank()
         }
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        guard textView.text != nil && range.lowerBound < 100 else {
+        guard textView.text != nil && range.lowerBound < maxWordCount else {
             return false
         }
         return true

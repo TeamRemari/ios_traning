@@ -8,7 +8,12 @@
 
 import UIKit
 
-class LocationCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSource {
+protocol LocationCellDelegate: AnyObject {
+    func locationDidSet(_ location: String)
+}
+
+class LocationCell: UITableViewCell {
+    weak var delegate: LocationCellDelegate?
     
     private let locationData: [String] = ["東京都", "大阪府", "福岡県"]
     
@@ -20,7 +25,7 @@ class LocationCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSourc
     
     private let picker = UIPickerView()
     
-    let textField: UITextField = {
+    private let textField: UITextField = {
         let tf = UITextField()
         tf.placeholder = "未設定"
         tf.textAlignment = .right
@@ -39,28 +44,22 @@ class LocationCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSourc
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        locationLabel.frame.origin.x = Length.horizontalPadding
-        locationLabel.center.y = contentView.center.y
-        locationLabel.frame.size = locationLabel.intrinsicContentSize
-        textField.frame.origin = .init(x: locationLabel.frame.maxX + Length.spacingNormal, y: locationLabel.frame.minY)
-        textField.frame.size = .init(width: contentView.bounds.width - textField.frame.minX - Length.horizontalPadding, height: locationLabel.bounds.size.height)
+        layoutLocationLabel()
+        layoutTextField()
         
         if !picker.isHidden {
-            pickerAccessoryViewDoneButton.frame.origin.x = contentView.bounds.width - pickerAccessoryViewDoneButton.bounds.width - Length.horizontalPadding
-            pickerAccessoryViewDoneButton.center.y = textField.inputAccessoryView!.center.y
+            layoutPickerAccessoryViewDoneButton()
         }
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        picker.delegate = self
-        picker.dataSource = self
-        textField.inputView = picker
-        textField.inputAccessoryView = makePickerAccessoryView()
+        setupPicker()
+        setupTextField()
+        
         [locationLabel, textField].forEach({
             contentView.addSubview($0)
         })
-        pickerAccessoryViewDoneButton.addTarget(self, action: #selector(donePicking), for: .touchUpInside)
     }
     
     @objc private func donePicking() {
@@ -77,6 +76,39 @@ class LocationCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSourc
         return view
     }
     
+    private func layoutLocationLabel() {
+        locationLabel.frame.origin.x = Length.horizontalPadding
+        locationLabel.center.y = contentView.center.y
+        locationLabel.frame.size = locationLabel.intrinsicContentSize
+    }
+    
+    private func layoutTextField() {
+        textField.frame.origin = .init(x: locationLabel.frame.maxX + Length.spacingNormal, y: locationLabel.frame.minY)
+        textField.frame.size = .init(width: contentView.bounds.width - textField.frame.minX - Length.horizontalPadding, height: locationLabel.bounds.size.height)
+    }
+    
+    private func layoutPickerAccessoryViewDoneButton() {
+        pickerAccessoryViewDoneButton.frame.origin.x = contentView.bounds.width - pickerAccessoryViewDoneButton.bounds.width - Length.horizontalPadding
+        pickerAccessoryViewDoneButton.center.y = textField.inputAccessoryView!.center.y
+    }
+    
+    private func setupPicker() {
+        picker.delegate = self
+        picker.dataSource = self
+        pickerAccessoryViewDoneButton.addTarget(self, action: #selector(donePicking), for: .touchUpInside)
+    }
+    
+    private func setupTextField() {
+        textField.inputView = picker
+        textField.inputAccessoryView = makePickerAccessoryView()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+extension LocationCell: UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -86,14 +118,12 @@ class LocationCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSourc
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return String(locationData[row])
+        return locationData[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        textField.text = String(locationData[row])
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        let location = locationData[row]
+        textField.text = location
+        delegate?.locationDidSet(location)
     }
 }

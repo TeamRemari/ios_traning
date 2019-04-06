@@ -13,7 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-    class NavBarController: UINavigationController {
+    private class NavBarController: UINavigationController {
         override var preferredStatusBarStyle: UIStatusBarStyle {
             return .lightContent
         }
