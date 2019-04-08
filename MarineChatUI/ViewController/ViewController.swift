@@ -10,8 +10,8 @@ import UIKit
 
 private typealias CellsDelegate =
     ProfileImageCellDelegate & NickNameCellDelegate &
-    SexCellDelegate & AgeCellDelegate &
-    LocationCellDelegate & IntroCellDelegate
+    GenderCellDelegate & AgeCellDelegate &
+    LocationCellDelegate & BioCellDelegate
 
 final class ViewController: UITableViewController {
     
@@ -35,7 +35,7 @@ final class ViewController: UITableViewController {
             cell.delegate = self
             return cell
         }(), {
-            let cell = SexCell()
+            let cell = GenderCell()
             cell.delegate = self
             return cell
         }(), {
@@ -47,8 +47,8 @@ final class ViewController: UITableViewController {
             cell.delegate = self
             return cell
         }()]
-    private lazy var introCell: UITableViewCell = {
-        let cell = IntroCell()
+    private lazy var bioCell: UITableViewCell = {
+        let cell = BioCell()
         cell.delegate = self
         return cell
     }()
@@ -84,7 +84,7 @@ final class ViewController: UITableViewController {
         if indexPath.section == 0 {
             return infoCells[indexPath.row]
         } else {
-            return introCell
+            return bioCell
         }
     }
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -181,11 +181,11 @@ extension ViewController: CellsDelegate {
         userProfileInfo.age = age
     }
     
-    func introDidSet(_ intro: String) {
-        if intro == "" {
-            userProfileInfo.intro = nil
+    func bioDidSet(_ bio: String) {
+        if bio == "" {
+            userProfileInfo.bio = nil
         } else {
-            userProfileInfo.intro = intro
+            userProfileInfo.bio = bio
         }
     }
     
@@ -201,14 +201,14 @@ extension ViewController: CellsDelegate {
         }
     }
     
-    func sexIsSelected(_ sex: SexCell.Sex) {
-        switch sex {
+    func genderIsSelected(_ gender: GenderCell.Gender) {
+        switch gender {
         case .male:
-            userProfileInfo.sex = "male"
+            userProfileInfo.gender = "male"
         case .female:
-            userProfileInfo.sex = "female"
+            userProfileInfo.gender = "female"
         case .notSelected:
-            userProfileInfo.sex = nil
+            userProfileInfo.gender = nil
         }
     }
 }

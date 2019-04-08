@@ -15,10 +15,10 @@
 		8E92B67522547B7300C6B529 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E92B67322547B7300C6B529 /* LaunchScreen.storyboard */; };
 		8E92B67D225499CA00C6B529 /* ProfileImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E92B67C225499CA00C6B529 /* ProfileImageCell.swift */; };
 		8E92B67F2254A07200C6B529 /* NicknameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E92B67E2254A07200C6B529 /* NicknameCell.swift */; };
-		8E92B6812254B86E00C6B529 /* SexCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E92B6802254B86E00C6B529 /* SexCell.swift */; };
+		8E92B6812254B86E00C6B529 /* GenderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E92B6802254B86E00C6B529 /* GenderCell.swift */; };
 		8EAB60262254EC8500CBD21F /* AgeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EAB60252254EC8500CBD21F /* AgeCell.swift */; };
 		8EAB6028225505E800CBD21F /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EAB6027225505E800CBD21F /* LocationCell.swift */; };
-		8EAB602A225508AD00CBD21F /* IntroCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EAB6029225508AD00CBD21F /* IntroCell.swift */; };
+		8EAB602A225508AD00CBD21F /* BioCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EAB6029225508AD00CBD21F /* BioCell.swift */; };
 		8EF14CAC22563B5A00DEACCA /* ThemeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF14CAB22563B5A00DEACCA /* ThemeColor.swift */; };
 		8EF14CAE22563CC200DEACCA /* Length.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF14CAD22563CC200DEACCA /* Length.swift */; };
 		8EF14CB02256436800DEACCA /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF14CAF2256436800DEACCA /* Extensions.swift */; };
@@ -35,10 +35,10 @@
 		8E92B67622547B7300C6B529 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8E92B67C225499CA00C6B529 /* ProfileImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageCell.swift; sourceTree = "<group>"; };
 		8E92B67E2254A07200C6B529 /* NicknameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameCell.swift; sourceTree = "<group>"; };
-		8E92B6802254B86E00C6B529 /* SexCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SexCell.swift; sourceTree = "<group>"; };
+		8E92B6802254B86E00C6B529 /* GenderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderCell.swift; sourceTree = "<group>"; };
 		8EAB60252254EC8500CBD21F /* AgeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgeCell.swift; sourceTree = "<group>"; };
 		8EAB6027225505E800CBD21F /* LocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
-		8EAB6029225508AD00CBD21F /* IntroCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroCell.swift; sourceTree = "<group>"; };
+		8EAB6029225508AD00CBD21F /* BioCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BioCell.swift; sourceTree = "<group>"; };
 		8EF14CAB22563B5A00DEACCA /* ThemeColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeColor.swift; sourceTree = "<group>"; };
 		8EF14CAD22563CC200DEACCA /* Length.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Length.swift; sourceTree = "<group>"; };
 		8EF14CAF2256436800DEACCA /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -118,10 +118,10 @@
 			children = (
 				8E92B67C225499CA00C6B529 /* ProfileImageCell.swift */,
 				8E92B67E2254A07200C6B529 /* NicknameCell.swift */,
-				8E92B6802254B86E00C6B529 /* SexCell.swift */,
+				8E92B6802254B86E00C6B529 /* GenderCell.swift */,
 				8EAB60252254EC8500CBD21F /* AgeCell.swift */,
 				8EAB6027225505E800CBD21F /* LocationCell.swift */,
-				8EAB6029225508AD00CBD21F /* IntroCell.swift */,
+				8EAB6029225508AD00CBD21F /* BioCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -207,14 +207,14 @@
 			files = (
 				8E92B66D22547B7100C6B529 /* ViewController.swift in Sources */,
 				8EF14CAE22563CC200DEACCA /* Length.swift in Sources */,
-				8E92B6812254B86E00C6B529 /* SexCell.swift in Sources */,
+				8E92B6812254B86E00C6B529 /* GenderCell.swift in Sources */,
 				8E2904C12258748800AC7C96 /* UserProfileInfo.swift in Sources */,
 				8EF14CAC22563B5A00DEACCA /* ThemeColor.swift in Sources */,
 				8E92B66B22547B7100C6B529 /* AppDelegate.swift in Sources */,
 				8EAB60262254EC8500CBD21F /* AgeCell.swift in Sources */,
 				8EAB6028225505E800CBD21F /* LocationCell.swift in Sources */,
 				8E92B67D225499CA00C6B529 /* ProfileImageCell.swift in Sources */,
-				8EAB602A225508AD00CBD21F /* IntroCell.swift in Sources */,
+				8EAB602A225508AD00CBD21F /* BioCell.swift in Sources */,
 				8EF14CB02256436800DEACCA /* Extensions.swift in Sources */,
 				8E92B67F2254A07200C6B529 /* NicknameCell.swift in Sources */,
 			);

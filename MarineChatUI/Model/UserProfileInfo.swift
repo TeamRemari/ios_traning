@@ -11,8 +11,8 @@ import Foundation
 struct UserProfileInfo {
     var profileImage: Data?
     var nickName: String?
-    var sex: String?
+    var gender: String?
     var age: Int?
     var location: String?
-    var intro: String?
+    var bio: String?
 }

@@ -1,5 +1,5 @@
 //
-//  SexCell.swift
+//  GenderCell.swift
 //  MarineChatUI
 //
 //  Created by Sho Morita on 2019/04/03.
@@ -8,28 +8,28 @@
 
 import UIKit
 
-protocol SexCellDelegate: AnyObject {
-    func sexIsSelected(_ sex: SexCell.Sex)
+protocol GenderCellDelegate: AnyObject {
+    func genderIsSelected(_ gender: GenderCell.Gender)
 }
 
-final class SexCell: UITableViewCell {
-    weak var delegate: SexCellDelegate?
+final class GenderCell: UITableViewCell {
+    weak var delegate: GenderCellDelegate?
     
-    private var selectedSex: Sex = .notSelected {
+    private var selectedGender: Gender = .notSelected {
         didSet {
-            if selectedSex != .notSelected {
-                delegate?.sexIsSelected(selectedSex)
+            if selectedGender != .notSelected {
+                delegate?.genderIsSelected(selectedGender)
             }
         }
     }
     
-    private let sexLabel: UILabel = {
+    private let genderLabel: UILabel = {
         let label = UILabel.defaultLabelInsideCell()
         label.text = "性別"
         return label
     }()
     
-    private let sexButtons: [Sex : UIButton] = [
+    private let genderButtons: [Gender : UIButton] = [
         .male : UIButton.circleShapedButton(sideLength: Length.diameterLarge),
         .female : UIButton.circleShapedButton(sideLength: Length.diameterLarge),
         .notSelected : UIButton.circleShapedButton(sideLength: Length.diameterLarge)
@@ -37,20 +37,20 @@ final class SexCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        layoutSexLabel()
+        layoutGenderLabel()
         
-        layoutSexButtons()
+        layoutGenderButtons()
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        setupSexButtons()
+        setupGenderButtons()
         setupColorOfButtons()
         
-        contentView.addSubview(sexLabel)
+        contentView.addSubview(genderLabel)
         
-        sexButtons.forEach({
+        genderButtons.forEach({
             contentView.addSubview($0.value)
         })
     }
@@ -64,20 +64,20 @@ final class SexCell: UITableViewCell {
     }
     
     @objc private func handleButtonTap(_ sender: UIButton) {
-        guard let tappedSex = sexButtons.first(where: {
+        guard let tappedGender = genderButtons.first(where: {
             $1 === sender
         })?.key else { return }
         addBorder(to: sender)
-        selectedSex = tappedSex
-        sexButtons.forEach({
-            if $0.key != selectedSex {
+        selectedGender = tappedGender
+        genderButtons.forEach({
+            if $0.key != selectedGender {
                 removeBorder(of: $0.value)
             }
         })
     }
     
     private func setupColorOfButtons() {
-        sexButtons.forEach {
+        genderButtons.forEach {
             if $0.key == .male {
                 $0.value.backgroundColor = UIColor(red: 173/255, green: 216/255, blue: 230/255, alpha: 1)
             } else if $0.key == .female {
@@ -86,25 +86,25 @@ final class SexCell: UITableViewCell {
         }
     }
     
-    private func layoutSexLabel() {
-        sexLabel.frame.size = sexLabel.intrinsicContentSize
-        sexLabel.center.y = contentView.center.y
-        sexLabel.frame.origin.x = Length.horizontalPadding
+    private func layoutGenderLabel() {
+        genderLabel.frame.size = genderLabel.intrinsicContentSize
+        genderLabel.center.y = contentView.center.y
+        genderLabel.frame.origin.x = Length.horizontalPadding
     }
     
-    private func layoutSexButtons() {
-        sexButtons.forEach({
+    private func layoutGenderButtons() {
+        genderButtons.forEach({
             $0.value.center.y = contentView.center.y
         })
         
-        sexButtons[.notSelected]!.frame.origin.x = sexLabel.frame.maxX + Length.spacingLarge
-        sexButtons[.male]!.frame.origin.x = sexButtons[.notSelected]!.frame.maxX + Length.spacingLarge
-        sexButtons[.female]!.frame.origin.x = sexButtons[.male]!.frame.maxX + Length.spacingLarge
+        genderButtons[.notSelected]!.frame.origin.x = genderLabel.frame.maxX + Length.spacingLarge
+        genderButtons[.male]!.frame.origin.x = genderButtons[.notSelected]!.frame.maxX + Length.spacingLarge
+        genderButtons[.female]!.frame.origin.x = genderButtons[.male]!.frame.maxX + Length.spacingLarge
     }
     
-    private func setupSexButtons() {
-        sexButtons.forEach({
-            if $0.key == selectedSex {
+    private func setupGenderButtons() {
+        genderButtons.forEach({
+            if $0.key == selectedGender {
                 addBorder(to: $0.value)
             }
             $0.value.layer.borderColor = ThemeColor.main.cgColor
@@ -117,8 +117,8 @@ final class SexCell: UITableViewCell {
     }
 }
 
-extension SexCell {
-    enum Sex {
+extension GenderCell {
+    enum Gender {
         case male, female, notSelected
     }
 }

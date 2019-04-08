@@ -1,5 +1,5 @@
 //
-//  IntroCell.swift
+//  BioCell.swift
 //  MarineChatUI
 //
 //  Created by Sho Morita on 2019/04/04.
@@ -8,12 +8,12 @@
 
 import UIKit
 
-protocol IntroCellDelegate: AnyObject {
-    func introDidSet(_ intro: String)
+protocol BioCellDelegate: AnyObject {
+    func bioDidSet(_ bio: String)
 }
 
-final class IntroCell: UITableViewCell {
-    weak var delegate: IntroCellDelegate?
+final class BioCell: UITableViewCell {
+    weak var delegate: BioCellDelegate?
     
     private let textView: UITextView = {
         let tv = UITextView()
@@ -67,7 +67,7 @@ final class IntroCell: UITableViewCell {
     }
 }
 
-extension IntroCell: UITextViewDelegate{
+extension BioCell: UITextViewDelegate{
     func textViewDidChange(_ textView: UITextView) {
         let wordCount = textView.text.count
         countLabel.text = "\(wordCount)/\(maxWordCount)"
@@ -81,7 +81,7 @@ extension IntroCell: UITextViewDelegate{
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
-        delegate?.introDidSet(textView.text)
+        delegate?.bioDidSet(textView.text)
         if textView.text.count == 0 {
             textViewIsBlank()
         }
