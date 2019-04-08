@@ -13,7 +13,7 @@ private typealias CellsDelegate =
     GenderCellDelegate & AgeCellDelegate &
     LocationCellDelegate & BioCellDelegate
 
-final class ViewController: UITableViewController {
+final class ProfileSettingViewController: UITableViewController {
     
     private var userProfileInfo = UserProfileInfo() {
         didSet {
@@ -59,7 +59,7 @@ final class ViewController: UITableViewController {
         ip.delegate = self
         return ip
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         checkIfUserProfileInfoIsCompleted()
@@ -118,7 +118,8 @@ final class ViewController: UITableViewController {
     }
     
     private func checkIfUserProfileInfoIsCompleted() {
-        let containsNil = Mirror(reflecting: userProfileInfo).children.contains(where: {
+        let containsNil = Mirror(reflecting: userProfileInfo).children.filter({$0.label == "profileImage" || $0.label == "nickName"
+        }).contains(where: {
             if case Optional<Any>.none = $0.value  {
                 return true
             } else {
@@ -131,13 +132,16 @@ final class ViewController: UITableViewController {
     private func setupNavBar() {
         navigationItem.leftBarButtonItem = closeButton
         navigationItem.rightBarButtonItem = saveButton
-        navigationItem.titleView = UILabel().barTitle()
+        navigationItem.titleView = UILabel().barTitle("プロフィール")
+        
+        closeButton.target = self
+        closeButton.action = #selector(closeButtonTapped)
     }
     
     private func setupTableView() {
         tableView.separatorStyle = .none
-        tableView.backgroundColor = ThemeColor.background
         tableView.allowsSelection = false
+        tableView.backgroundColor = ThemeColor.background
     }
     
     private func addTapGestureRecognizer() {
@@ -148,12 +152,16 @@ final class ViewController: UITableViewController {
     @objc private func endEditing() {
         tableView.endEditing(true)
     }
+    
+    @objc private func closeButtonTapped() {
+        dismiss(animated: true, completion: nil)
+    }
 }
 
 
 // Implements all cells delegate methods
 
-extension ViewController: CellsDelegate {
+extension ProfileSettingViewController: CellsDelegate {
     
     func profileImageIsTapped(tableViewCell: ProfileImageCell) {
         let actionSheet = UIAlertController(title: "画像選択時の注意", message: "卑猥な画像を設定した場合、所定の処置を行います。", preferredStyle: .actionSheet)
@@ -215,7 +223,7 @@ extension ViewController: CellsDelegate {
 
 // UIImagePickerControllerDelegate
 
-extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension ProfileSettingViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             if let profileImageCell = infoCells[0] as? ProfileImageCell {

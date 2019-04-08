@@ -11,6 +11,7 @@ import UIKit
 struct ThemeColor {
     static let main = UIColor(red: 136/255, green: 214/255, blue: 1, alpha: 1)
     static let background = UIColor(red: 244/255, green: 244/255, blue: 244/255, alpha: 1)
+    static let surface = UIColor.white
     static let onMain = UIColor.white
     static let onMainDisabled = UIColor(white: 1, alpha: 0.26)
     static let dark087 = UIColor(white: 0, alpha: 0.87)

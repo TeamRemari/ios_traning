@@ -10,10 +10,13 @@ import UIKit
 
 extension UIBarButtonItem {
     func closeButton() -> Self {
-        image = UIImage(imageLiteralResourceName: "closeButton").withRenderingMode(.alwaysTemplate)
-        tintColor = ThemeColor.onMain
-        return self
+        return makeBarButtonWithImage(imageName: "closeButton")
     }
+    
+    func settingButton() -> Self {
+        return makeBarButtonWithImage(imageName: "setting")
+    }
+    
     
     func saveButton() -> Self {
         title = "保存"
@@ -27,13 +30,19 @@ extension UIBarButtonItem {
             ], for: .disabled)
         return self
     }
+    
+    private func makeBarButtonWithImage(imageName: String) -> Self {
+        image = UIImage(imageLiteralResourceName: imageName).withRenderingMode(.alwaysTemplate)
+        tintColor = ThemeColor.onMain
+        return self
+    }
 }
 
 extension UILabel{
-    func barTitle() -> Self {
+    func barTitle(_ title: String) -> Self {
         textColor  = ThemeColor.onMain
         font = UIFont.boldSystemFont(ofSize: 20)
-        text = "プロフィール"
+        text = title
         return self
     }
 }

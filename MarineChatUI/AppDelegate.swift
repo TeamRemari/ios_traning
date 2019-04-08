@@ -12,21 +12,12 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    
-    private class NavBarController: UINavigationController {
-        override var preferredStatusBarStyle: UIStatusBarStyle {
-            return .lightContent
-        }
-    }
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         window = UIWindow()
-        let nav = NavBarController(rootViewController: ViewController(style: .grouped))
-        nav.navigationBar.barTintColor = ThemeColor.main
-        nav.navigationBar.shadowImage = UIImage()
-        window?.rootViewController = nav
+        window?.rootViewController = BaseTabBarController()
         window?.makeKeyAndVisible()
         return true
     }
