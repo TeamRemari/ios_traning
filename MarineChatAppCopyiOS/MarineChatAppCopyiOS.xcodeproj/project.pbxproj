@@ -1,0 +1,675 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8E539C91227C76470022F0D2 /* FeedTableViewCellPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E539C90227C76470022F0D2 /* FeedTableViewCellPresenter.swift */; };
+		8E539C94227C789E0022F0D2 /* SectionedTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E539C93227C789E0022F0D2 /* SectionedTableViewDataSource.swift */; };
+		8E539C96227C78E50022F0D2 /* SectionedTableViewDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E539C95227C78E50022F0D2 /* SectionedTableViewDataSourceTests.swift */; };
+		8E9A76F42279695C00A4E617 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A76F32279695C00A4E617 /* AppDelegate.swift */; };
+		8E9A76FC2279695C00A4E617 /* MarineChatAppCopyiOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A76FA2279695C00A4E617 /* MarineChatAppCopyiOS.xcdatamodeld */; };
+		8E9A76FE2279696100A4E617 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E9A76FD2279696100A4E617 /* Assets.xcassets */; };
+		8E9A77012279696100A4E617 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E9A76FF2279696100A4E617 /* LaunchScreen.storyboard */; };
+		8E9A770C2279696100A4E617 /* BaseNavControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A770B2279696100A4E617 /* BaseNavControllerTests.swift */; };
+		8E9A771A22796BE600A4E617 /* BaseNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A771822796BE600A4E617 /* BaseNavController.swift */; };
+		8E9A771B22796BE600A4E617 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A771922796BE600A4E617 /* BaseTabBarController.swift */; };
+		8E9A771D2279726300A4E617 /* BaseTabBarControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A771C2279726300A4E617 /* BaseTabBarControllerTests.swift */; };
+		8E9A771F227975E300A4E617 /* BaseSectionViewControllerPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A771E227975E300A4E617 /* BaseSectionViewControllerPresenterTests.swift */; };
+		8E9A7721227977F600A4E617 /* BaseSectionViewControllerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A7720227977F600A4E617 /* BaseSectionViewControllerPresenter.swift */; };
+		8E9A7723227985C000A4E617 /* ViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A7722227985C000A4E617 /* ViewControllerFactory.swift */; };
+		8E9A7725227990C000A4E617 /* BaseSectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A7724227990C000A4E617 /* BaseSectionViewController.swift */; };
+		8E9A7727227992E600A4E617 /* BaseSectionViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A7726227992E600A4E617 /* BaseSectionViewControllerTests.swift */; };
+		8E9A77292279C31100A4E617 /* BaseTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A77282279C31100A4E617 /* BaseTableView.swift */; };
+		8E9A772B2279C32100A4E617 /* BaseTableViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A772A2279C32100A4E617 /* BaseTableViewTests.swift */; };
+		8E9A775A2279D87C00A4E617 /* MarineChatCopyAppEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E9A77592279D87C00A4E617 /* MarineChatCopyAppEngine.framework */; };
+		8E9A775B2279D87C00A4E617 /* MarineChatCopyAppEngine.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8E9A77592279D87C00A4E617 /* MarineChatCopyAppEngine.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8E9A77662279E85D00A4E617 /* FeedTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A77652279E85D00A4E617 /* FeedTableViewDataSource.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8E9A77082279696100A4E617 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8E9A76E82279695C00A4E617 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8E9A76EF2279695C00A4E617;
+			remoteInfo = MarineChatAppCopyiOS;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8E9A775C2279D87C00A4E617 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				8E9A775B2279D87C00A4E617 /* MarineChatCopyAppEngine.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		8E539C90227C76470022F0D2 /* FeedTableViewCellPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewCellPresenter.swift; sourceTree = "<group>"; };
+		8E539C93227C789E0022F0D2 /* SectionedTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionedTableViewDataSource.swift; sourceTree = "<group>"; };
+		8E539C95227C78E50022F0D2 /* SectionedTableViewDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionedTableViewDataSourceTests.swift; sourceTree = "<group>"; };
+		8E9A76F02279695C00A4E617 /* MarineChatAppCopyiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarineChatAppCopyiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E9A76F32279695C00A4E617 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		8E9A76FB2279695C00A4E617 /* MarineChatAppCopyiOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MarineChatAppCopyiOS.xcdatamodel; sourceTree = "<group>"; };
+		8E9A76FD2279696100A4E617 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8E9A77002279696100A4E617 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8E9A77022279696100A4E617 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8E9A77072279696100A4E617 /* MarineChatAppCopyiOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MarineChatAppCopyiOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E9A770B2279696100A4E617 /* BaseNavControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavControllerTests.swift; sourceTree = "<group>"; };
+		8E9A770D2279696100A4E617 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8E9A771822796BE600A4E617 /* BaseNavController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavController.swift; sourceTree = "<group>"; };
+		8E9A771922796BE600A4E617 /* BaseTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
+		8E9A771C2279726300A4E617 /* BaseTabBarControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarControllerTests.swift; sourceTree = "<group>"; };
+		8E9A771E227975E300A4E617 /* BaseSectionViewControllerPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSectionViewControllerPresenterTests.swift; sourceTree = "<group>"; };
+		8E9A7720227977F600A4E617 /* BaseSectionViewControllerPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSectionViewControllerPresenter.swift; sourceTree = "<group>"; };
+		8E9A7722227985C000A4E617 /* ViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerFactory.swift; sourceTree = "<group>"; };
+		8E9A7724227990C000A4E617 /* BaseSectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSectionViewController.swift; sourceTree = "<group>"; };
+		8E9A7726227992E600A4E617 /* BaseSectionViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSectionViewControllerTests.swift; sourceTree = "<group>"; };
+		8E9A77282279C31100A4E617 /* BaseTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableView.swift; sourceTree = "<group>"; };
+		8E9A772A2279C32100A4E617 /* BaseTableViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewTests.swift; sourceTree = "<group>"; };
+		8E9A77592279D87C00A4E617 /* MarineChatCopyAppEngine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MarineChatCopyAppEngine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E9A77652279E85D00A4E617 /* FeedTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewDataSource.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8E9A76ED2279695C00A4E617 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8E9A775A2279D87C00A4E617 /* MarineChatCopyAppEngine.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8E9A77042279696100A4E617 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8E9A76E72279695C00A4E617 = {
+			isa = PBXGroup;
+			children = (
+				8E9A76F22279695C00A4E617 /* MarineChatAppCopyiOS */,
+				8E9A770A2279696100A4E617 /* MarineChatAppCopyiOSTests */,
+				8E9A76F12279695C00A4E617 /* Products */,
+				8E9A77592279D87C00A4E617 /* MarineChatCopyAppEngine.framework */,
+			);
+			sourceTree = "<group>";
+		};
+		8E9A76F12279695C00A4E617 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8E9A76F02279695C00A4E617 /* MarineChatAppCopyiOS.app */,
+				8E9A77072279696100A4E617 /* MarineChatAppCopyiOSTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8E9A76F22279695C00A4E617 /* MarineChatAppCopyiOS */ = {
+			isa = PBXGroup;
+			children = (
+				8E9A76F32279695C00A4E617 /* AppDelegate.swift */,
+				8E9A776B227A01CF00A4E617 /* BaseViewController */,
+				8E9A776C227A01E900A4E617 /* Presenter */,
+				8E9A776D227A022700A4E617 /* TableView */,
+				8E9A776E227A024600A4E617 /* Factory */,
+				8E9A76FD2279696100A4E617 /* Assets.xcassets */,
+				8E9A76FF2279696100A4E617 /* LaunchScreen.storyboard */,
+				8E9A77022279696100A4E617 /* Info.plist */,
+				8E9A76FA2279695C00A4E617 /* MarineChatAppCopyiOS.xcdatamodeld */,
+			);
+			path = MarineChatAppCopyiOS;
+			sourceTree = "<group>";
+		};
+		8E9A770A2279696100A4E617 /* MarineChatAppCopyiOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				8E9A7773227A02B500A4E617 /* BaseViewController */,
+				8E9A7776227A02E900A4E617 /* Presenter */,
+				8E9A770D2279696100A4E617 /* Info.plist */,
+				8E9A7778227A032300A4E617 /* TableVIew */,
+			);
+			path = MarineChatAppCopyiOSTests;
+			sourceTree = "<group>";
+		};
+		8E9A776B227A01CF00A4E617 /* BaseViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8E9A7771227A028200A4E617 /* NavigationController */,
+				8E9A7772227A028C00A4E617 /* TabBarController */,
+				8E9A7724227990C000A4E617 /* BaseSectionViewController.swift */,
+			);
+			path = BaseViewController;
+			sourceTree = "<group>";
+		};
+		8E9A776C227A01E900A4E617 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				8E9A7720227977F600A4E617 /* BaseSectionViewControllerPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		8E9A776D227A022700A4E617 /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				8E9A776F227A025700A4E617 /* Cell */,
+				8E9A77282279C31100A4E617 /* BaseTableView.swift */,
+				8E9A7770227A026100A4E617 /* DataSource */,
+			);
+			path = TableView;
+			sourceTree = "<group>";
+		};
+		8E9A776E227A024600A4E617 /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				8E9A777C227A09AB00A4E617 /* Protocol */,
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
+		8E9A776F227A025700A4E617 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				8E539C90227C76470022F0D2 /* FeedTableViewCellPresenter.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		8E9A7770227A026100A4E617 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				8E9A77652279E85D00A4E617 /* FeedTableViewDataSource.swift */,
+				8E539C93227C789E0022F0D2 /* SectionedTableViewDataSource.swift */,
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
+		8E9A7771227A028200A4E617 /* NavigationController */ = {
+			isa = PBXGroup;
+			children = (
+				8E9A771822796BE600A4E617 /* BaseNavController.swift */,
+			);
+			path = NavigationController;
+			sourceTree = "<group>";
+		};
+		8E9A7772227A028C00A4E617 /* TabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				8E9A771922796BE600A4E617 /* BaseTabBarController.swift */,
+			);
+			path = TabBarController;
+			sourceTree = "<group>";
+		};
+		8E9A7773227A02B500A4E617 /* BaseViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8E9A7774227A02C100A4E617 /* NavigationController */,
+				8E9A7775227A02C900A4E617 /* TabBarController */,
+				8E9A7726227992E600A4E617 /* BaseSectionViewControllerTests.swift */,
+			);
+			path = BaseViewController;
+			sourceTree = "<group>";
+		};
+		8E9A7774227A02C100A4E617 /* NavigationController */ = {
+			isa = PBXGroup;
+			children = (
+				8E9A770B2279696100A4E617 /* BaseNavControllerTests.swift */,
+			);
+			path = NavigationController;
+			sourceTree = "<group>";
+		};
+		8E9A7775227A02C900A4E617 /* TabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				8E9A771C2279726300A4E617 /* BaseTabBarControllerTests.swift */,
+			);
+			path = TabBarController;
+			sourceTree = "<group>";
+		};
+		8E9A7776227A02E900A4E617 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				8E9A771E227975E300A4E617 /* BaseSectionViewControllerPresenterTests.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		8E9A7778227A032300A4E617 /* TableVIew */ = {
+			isa = PBXGroup;
+			children = (
+				8E9A772A2279C32100A4E617 /* BaseTableViewTests.swift */,
+				8E9A7779227A033D00A4E617 /* Cell */,
+				8E9A777B227A034C00A4E617 /* DataSource */,
+			);
+			path = TableVIew;
+			sourceTree = "<group>";
+		};
+		8E9A7779227A033D00A4E617 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		8E9A777B227A034C00A4E617 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				8E539C95227C78E50022F0D2 /* SectionedTableViewDataSourceTests.swift */,
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
+		8E9A777C227A09AB00A4E617 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				8E9A7722227985C000A4E617 /* ViewControllerFactory.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8E9A76EF2279695C00A4E617 /* MarineChatAppCopyiOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8E9A77102279696100A4E617 /* Build configuration list for PBXNativeTarget "MarineChatAppCopyiOS" */;
+			buildPhases = (
+				8E9A76EC2279695C00A4E617 /* Sources */,
+				8E9A76ED2279695C00A4E617 /* Frameworks */,
+				8E9A76EE2279695C00A4E617 /* Resources */,
+				8E9A775C2279D87C00A4E617 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MarineChatAppCopyiOS;
+			productName = MarineChatAppCopyiOS;
+			productReference = 8E9A76F02279695C00A4E617 /* MarineChatAppCopyiOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		8E9A77062279696100A4E617 /* MarineChatAppCopyiOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8E9A77132279696100A4E617 /* Build configuration list for PBXNativeTarget "MarineChatAppCopyiOSTests" */;
+			buildPhases = (
+				8E9A77032279696100A4E617 /* Sources */,
+				8E9A77042279696100A4E617 /* Frameworks */,
+				8E9A77052279696100A4E617 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8E9A77092279696100A4E617 /* PBXTargetDependency */,
+			);
+			name = MarineChatAppCopyiOSTests;
+			productName = MarineChatAppCopyiOSTests;
+			productReference = 8E9A77072279696100A4E617 /* MarineChatAppCopyiOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8E9A76E82279695C00A4E617 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1020;
+				LastUpgradeCheck = 1020;
+				ORGANIZATIONNAME = "Sho Morita";
+				TargetAttributes = {
+					8E9A76EF2279695C00A4E617 = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
+					8E9A77062279696100A4E617 = {
+						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = 8E9A76EF2279695C00A4E617;
+					};
+				};
+			};
+			buildConfigurationList = 8E9A76EB2279695C00A4E617 /* Build configuration list for PBXProject "MarineChatAppCopyiOS" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8E9A76E72279695C00A4E617;
+			productRefGroup = 8E9A76F12279695C00A4E617 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8E9A76EF2279695C00A4E617 /* MarineChatAppCopyiOS */,
+				8E9A77062279696100A4E617 /* MarineChatAppCopyiOSTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8E9A76EE2279695C00A4E617 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8E9A77012279696100A4E617 /* LaunchScreen.storyboard in Resources */,
+				8E9A76FE2279696100A4E617 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8E9A77052279696100A4E617 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8E9A76EC2279695C00A4E617 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8E9A7721227977F600A4E617 /* BaseSectionViewControllerPresenter.swift in Sources */,
+				8E539C94227C789E0022F0D2 /* SectionedTableViewDataSource.swift in Sources */,
+				8E9A771B22796BE600A4E617 /* BaseTabBarController.swift in Sources */,
+				8E9A76FC2279695C00A4E617 /* MarineChatAppCopyiOS.xcdatamodeld in Sources */,
+				8E9A7723227985C000A4E617 /* ViewControllerFactory.swift in Sources */,
+				8E9A77292279C31100A4E617 /* BaseTableView.swift in Sources */,
+				8E9A771A22796BE600A4E617 /* BaseNavController.swift in Sources */,
+				8E9A7725227990C000A4E617 /* BaseSectionViewController.swift in Sources */,
+				8E9A76F42279695C00A4E617 /* AppDelegate.swift in Sources */,
+				8E9A77662279E85D00A4E617 /* FeedTableViewDataSource.swift in Sources */,
+				8E539C91227C76470022F0D2 /* FeedTableViewCellPresenter.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8E9A77032279696100A4E617 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8E9A772B2279C32100A4E617 /* BaseTableViewTests.swift in Sources */,
+				8E9A771F227975E300A4E617 /* BaseSectionViewControllerPresenterTests.swift in Sources */,
+				8E539C96227C78E50022F0D2 /* SectionedTableViewDataSourceTests.swift in Sources */,
+				8E9A7727227992E600A4E617 /* BaseSectionViewControllerTests.swift in Sources */,
+				8E9A771D2279726300A4E617 /* BaseTabBarControllerTests.swift in Sources */,
+				8E9A770C2279696100A4E617 /* BaseNavControllerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8E9A77092279696100A4E617 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8E9A76EF2279695C00A4E617 /* MarineChatAppCopyiOS */;
+			targetProxy = 8E9A77082279696100A4E617 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		8E9A76FF2279696100A4E617 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8E9A77002279696100A4E617 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		8E9A770E2279696100A4E617 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		8E9A770F2279696100A4E617 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8E9A77112279696100A4E617 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = N6UVMUXNSQ;
+				INFOPLIST_FILE = MarineChatAppCopyiOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.shomorita.MarineChatAppCopyiOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8E9A77122279696100A4E617 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = N6UVMUXNSQ;
+				INFOPLIST_FILE = MarineChatAppCopyiOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.shomorita.MarineChatAppCopyiOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		8E9A77142279696100A4E617 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = N6UVMUXNSQ;
+				INFOPLIST_FILE = MarineChatAppCopyiOSTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.shomorita.MarineChatAppCopyiOSTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MarineChatAppCopyiOS.app/MarineChatAppCopyiOS";
+			};
+			name = Debug;
+		};
+		8E9A77152279696100A4E617 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = N6UVMUXNSQ;
+				INFOPLIST_FILE = MarineChatAppCopyiOSTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.shomorita.MarineChatAppCopyiOSTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MarineChatAppCopyiOS.app/MarineChatAppCopyiOS";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8E9A76EB2279695C00A4E617 /* Build configuration list for PBXProject "MarineChatAppCopyiOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8E9A770E2279696100A4E617 /* Debug */,
+				8E9A770F2279696100A4E617 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8E9A77102279696100A4E617 /* Build configuration list for PBXNativeTarget "MarineChatAppCopyiOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8E9A77112279696100A4E617 /* Debug */,
+				8E9A77122279696100A4E617 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8E9A77132279696100A4E617 /* Build configuration list for PBXNativeTarget "MarineChatAppCopyiOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8E9A77142279696100A4E617 /* Debug */,
+				8E9A77152279696100A4E617 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		8E9A76FA2279695C00A4E617 /* MarineChatAppCopyiOS.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				8E9A76FB2279695C00A4E617 /* MarineChatAppCopyiOS.xcdatamodel */,
+			);
+			currentVersion = 8E9A76FB2279695C00A4E617 /* MarineChatAppCopyiOS.xcdatamodel */;
+			path = MarineChatAppCopyiOS.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 8E9A76E82279695C00A4E617 /* Project object */;
+}
